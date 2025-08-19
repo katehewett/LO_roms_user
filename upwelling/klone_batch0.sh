@@ -13,13 +13,13 @@
 #SBATCH --time=00:20:00
 
 ## Memory per node
-#SBATCH --mem=192G
+#SBATCH --mem=128G
 
 module purge
 module load intel/oneAPI
-NFDIR=/gscratch/macc/local/netcdf-ifort/
-export LD_LIBRARY_PATH=${NFDIR}/lib:${LD_LIBRARY_PATH}
+NFDIR=/gscratch/macc/local/netcdf-ifort
+NCDIR=/gscratch/macc/local/netcdf-icc
+export LD_LIBRARY_PATH=${NFDIR}/lib:${NCDIR}/lib:${LD_LIBRARY_PATH}
 
-RUN_DIR=/mmfs1/gscratch/macc/kmhewett/LO_roms_user/upwelling
+RUN_DIR=/gscratch/macc/kmhewett/LO_roms_user/upwelling
 mpirun -np 4 $RUN_DIR/romsM $RUN_DIR/roms_upwelling.in > $RUN_DIR/roms_log.txt
-
