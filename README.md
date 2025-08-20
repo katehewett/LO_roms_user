@@ -13,7 +13,9 @@
 Test case and followed directions on Parker's readme
 
 # x11b 
-edits to code s/t I can run the forecast on Klone 
+Notes on steps and edits made to code s/t I can run the forecast on Klone.
+
+**(1) On my github and personal machine**
 
 In my github, I created a fork to Parker's LO_roms_user.  
 
@@ -28,8 +30,13 @@ While in the forked parker_LO_roms_user (on my local machine) do this:
 ```
 cp -r x11b ../LO_roms_user/
 ```
-**Don't use mv because that will suggest changes to Parker's LO_roms_user.**  
+***Don't use mv because that will suggest changes to Parker's LO_roms_user. You can't undo a move, but putting the file back will set gitdesktop back to no changed files :) ***
 
 Then made the following edits:
 ##build_roms.sh 
 - `build_roms.sh` : edited line 173 parker --> kmhewett
+
+commit changes to LO_roms_user to github. Then pull on apogee + Klone
+
+
+
