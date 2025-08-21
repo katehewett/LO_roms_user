@@ -57,9 +57,11 @@ module load intel/oneAPI
 logout
 ```
 
-**(3) Forecast scenarios**   
+**(3) make sure LO is up to date on Klone (git pull)**
 
-**(3a) Forcing was created but forecast didn't run; forcing files are on klone already (get_forcing == False).**  
+**(4) Forecast scenarios**   
+
+**(4a) Forcing was created but forecast didn't run; forcing files are on klone already (get_forcing == False).**  
 One solution:  
    * On klone: copy forcing files from parker's LOo/forcing/ to kmhewett's for: f2025.08.21 (.22 and .23). This avoided making changes to get_lo_info and/or driver_roms3, but not sure if best. 
    
