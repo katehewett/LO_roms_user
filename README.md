@@ -57,18 +57,18 @@ module load intel/oneAPI
 logout
 ```
 
-**(3) make sure LO is up to date on Klone (git pull)**
+**(3) make sure LO is up to date on klone (git pull)**
 
 **(4) Forecast scenarios**   
 
 **(4a) Forcing was created but forecast didn't run; forcing files are on klone already (get_forcing == False).**  
 One solution:  
-   * On klone: copy forcing files from parker's LOo/forcing/ to kmhewett's for: f2025.08.21 (.22 and .23). This avoided making changes to get_lo_info and/or driver_roms3, but not sure if best. 
+   * On klone: copy forcing files from parker's LOo/forcing/ to kmhewett's for: f2025.08.21 (.22 and .23). This avoided making changes to get_lo_info and/or driver_roms4, but not sure if best. 
    
    * On apogee: copy last history file from /dat1/parker/LO_roms/cas7_t1_x11b/f2025.08.20/ocean_his_0025.nc to kmhewett's
 
    * On klone, do 
    ```
    LOd="/gscratch/macc/kmhewett/LO/driver"
-   python3 $LOd/driver_roms3.py -g cas7 -t t0 -x x4b -0 2025.08.21 -r forecast -np 200 -N 40 --get_forcing False < /dev/null > $LOd/forecast_t01.log &
+   python3 $LOd/driver_roms4.py -g cas7 -t t1 -x x11b -r forecast --get_forcing False --group_choice macc --cpu_choice compute -np 200 -N 40 < /dev/null > $LOd/forecast_t01.log
    ```
