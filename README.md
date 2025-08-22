@@ -57,18 +57,41 @@ module load intel/oneAPI
 logout
 ```
 
-**(3) make sure LO is up to date on klone (git pull)**
+**(3) Make sure we have the information required to run the forecast** 
+
+***(3A) Grid***  
+On Klone, under gscratch/macc/LO_data/grids/cas7, do:
+
+```
+cp -r /gscratch/macc/parker/LO_data/grids/cas7 ./
+```
+could have scp'd from apogee too.   
+
+***(3B) LO/dot_in***  
+On Klone (git pull under my LO). To make sure we have the most uptodate version
 
 **(4) Forecast scenarios**   
-
-**(4a) Forcing was created but forecast didn't run; forcing files are on klone already (get_forcing == False).**  
+***(4a) Forcing was created but forecast didn't run; forcing files are on klone already (get_forcing == False).***  
 One solution:  
    * On klone: copy forcing files from parker's LOo/forcing/ to kmhewett's for: f2025.08.21 (.22 and .23). This avoided making changes to get_lo_info and/or driver_roms4, but not sure if best. 
    
    * On apogee: copy last history file from /dat1/parker/LO_roms/cas7_t1_x11b/f2025.08.20/ocean_his_0025.nc to kmhewett's
 
-   * On klone, do 
+   * Grab prior day for restart  *(Note example forecast to start on 2025.08.21)*   
+   Copy files from Parker's LO_roms.  
+   under gscratch/macc/kmhewett/LO_roms/cas7_t1_x11b/f2025.08.20, From Parker's folder copy:  
+      * ocean_his_0025.nc  
+      * klone_batch.sh *(edit parker --> kmhewett)*  
+      * bio_Banas.in  
+      * liveocean.in  *(edit parker --> kmhewett)*  
+      * log.txt  
+
+   * On klone, under gscratch/macc/kmhewett/LO, do:
    ```
    LOd="/gscratch/macc/kmhewett/LO/driver"
-   python3 $LOd/driver_roms4.py -g cas7 -t t1 -x x11b -r forecast --get_forcing False --group_choice macc --cpu_choice compute -np 200 -N 40 < /dev/null > $LOd/forecast_t01.log
+   $LOd/driver_roms4.py -g cas7 -t t1 -x x11b -r forecast -s continuation --get_forcing False --group_choice macc --cpu_choice compute -np 200 -N 40 < /dev/null > $LOd/forecast_t02.log&
    ```
+
+   *The forecast_t02.log was my testing numbering. forecast_t01.log has the errors from my first attempt to run the forecast, and t02 was my second attempt. <span style="color: blue;">TODO: Curious if I need to use Parker's naming for logs in the future, in which case I'd call this: `cas7_forecast.log` </span>*  
+
+Processing steps: 
