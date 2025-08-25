@@ -21,7 +21,7 @@ In my github, I created a fork to Parker's LO_roms_user.
 
 * *I used github instead of Terminal/apogee, so could get most recent version of code. Probably doesn't matter for x11b, but did matter in upwelling test case*  
 
-* It is renamed in my github and machine "Parker_LO_roms_user" 
+* It is renamed in my github and mac "Parker_LO_roms_user" 
 
 I then made a copy of Parker's x11b in my LO_roms_user.  
 
@@ -113,7 +113,7 @@ commit changes to LO_roms_user to github. Then pull on apogee + Klone
 
 **(3) Make sure we have the information required to run the forecast**   
 ***(3A) Grid***  
-On Klone, under gscratch/macc/LO_data/grids, do:
+On Klone, under gscratch/macc/kmhewett/LO_data/grids, do:
 
 ```
 cp -r /gscratch/macc/parker/LO_data/grids/wgh2 ./
@@ -122,7 +122,7 @@ cp -r /gscratch/macc/parker/LO_data/grids/oly2 ./
 could have scp'd from apogee too.   
 
 ***(3B) LO/dot_in***  
-On Klone (git pull under my LO). To make sure we have the most uptodate version
+On Klone (git pull under my LO). To make sure we have the most uptodate version of dot_in
 
 **(2) Compile x11b**  
 While on klone in the directory LO_roms_user/xn11b, do these steps, waiting for each to finish, to compile ROMS:  
